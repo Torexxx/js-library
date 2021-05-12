@@ -9,14 +9,12 @@ $.prototype.init = function(selector) {
         return this
     }
 
-
     if (selector.tagName) {
         this[0] = selector;
         this.length = 1;
 
         return this;
     }
-
 
     const elements = document.querySelectorAll(selector);
     Object.assign(this, elements);

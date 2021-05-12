@@ -22,6 +22,10 @@ $.prototype.removeClass = function(...classNames) {
 }
 
 $.prototype.toggleClass = function(...classNames) {
+
+    if (!this[0]) {
+        return this;
+    }
     
     for (let i = 0; i < this.length; i ++ ) {
         if (!this[i].classList) {
@@ -47,11 +51,7 @@ $.prototype.hasClass = function(classNames) {
          if (res) break;
     }
     return res;
-
-
-
 }
-    // TODO add/remove attributes
 
 $.prototype.addAttribute = function(name, value) {
     for (let i = 0; i < this.length; i ++ ) { 
@@ -59,7 +59,6 @@ $.prototype.addAttribute = function(name, value) {
     }
 
     return this
-
 }
 
 $.prototype.deleteAttribute = function(name, value) {
@@ -68,5 +67,4 @@ $.prototype.deleteAttribute = function(name, value) {
     }
 
     return this
-
 }
