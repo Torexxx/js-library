@@ -29,3 +29,46 @@ $.prototype.eq = function(i) {
 
 //     return this
 // }
+
+// Полчучение элементов по порядку, которые имеют общего родителя
+
+$.prototype.index = function() {
+    const parent = this[0].parentNode;
+    const childs = [...parent.children];
+    
+    function findMyIndex (el) { 
+        return el === this[0];
+    }
+
+   return childs.findIndex(findMyIndex.bind(this));
+}
+
+$.prototype.find = function(selector) {
+
+    let numbersOfItems = 0;
+    let counter = 0;
+
+    const copyObj = Object.assign({}, this);
+
+    for (let i = 0; i < copyObj.length; i++) {
+        const arr = copyObj[i].querySelectorAll(selector);
+        
+        if (arr.length === 0) {
+            continue;
+        }
+
+        for (let j = 0; j < arr.length; j++) {
+            this[counter] = arr[j];
+            counter++;
+        }
+        numbersOfItems +=arr.length;
+       
+    }
+    this.length = numbersOfItems;
+    const objLength = Object.keys(this).length;
+    for(;numbersOfItems< objLength; numbersOfItems++) {
+        delete this[numbersOfItems];
+    }
+
+    return this;
+}
