@@ -10,6 +10,5 @@ import $ from './lib/lib';
   console.log($(this).closest());
  })
 
-// $('.active').addAttribute('contenteditable', '');
-// console.log($('div').eq(1));
-console.log($('.more').eq(1).siblings());
+
+ $('button').fadeIn(1800);
